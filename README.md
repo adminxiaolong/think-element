@@ -4,6 +4,9 @@ Think-element
 think-element 使用Thinkphp6 + element ui + vue实现的快速制作项目通用后台管理框架。 适合个人开发者、工作室，非常适合快速开发中小型项目，一键curd能够快速生成
 一个模块的操作，支持操作和事件支持钩子实现，可以构造字段模型单独生成form、table、search等组件。
 
+演示：
+
+![输入图片说明](https://www.phpbloger.com/usr/uploads/2021/07/2023524219.gif "在这里输入图片标题")
 
 > 运行环境要求PHP7.1+
 
