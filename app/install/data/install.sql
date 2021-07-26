@@ -4,10 +4,10 @@
 CREATE TABLE IF NOT EXISTS `td_admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `rid` int(11) NOT NULL DEFAULT '0' COMMENT '角色ID',
-  `mobile` char(11) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '手机号',
-  `uname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '用户名',
-  `pass` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '密码',
-  `ip` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '登陆IP',
+  `mobile` char(11)  NOT NULL DEFAULT '' COMMENT '手机号',
+  `uname` varchar(255)  NOT NULL DEFAULT '' COMMENT '用户名',
+  `pass` varchar(255)  NOT NULL DEFAULT '' COMMENT '密码',
+  `ip` varchar(255)  NOT NULL COMMENT '登陆IP',
   `login_time` datetime DEFAULT NULL  COMMENT '登陆时间',
   `create_time` datetime DEFAULT NULL  COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
@@ -19,16 +19,16 @@ CREATE TABLE IF NOT EXISTS `td_admin` (
 -- ----------------------------
 CREATE TABLE IF NOT EXISTS `td_auth_menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '菜单名称',
+  `name` varchar(255)  NOT NULL DEFAULT '' COMMENT '菜单名称',
   `pid` int(11) NOT NULL DEFAULT '0' COMMENT '父级ID',
-  `icon` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'icon',
-  `route` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '路由',
+  `icon` varchar(50)  NOT NULL DEFAULT '' COMMENT 'icon',
+  `route` varchar(100)  NOT NULL DEFAULT '' COMMENT '路由',
   `weigh` int(11) NOT NULL DEFAULT '0' COMMENT '权重',
   `show` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1显示、2隐藏',
   `son` tinyint(1) NOT NULL DEFAULT '0' COMMENT '子菜单',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of td_auth_menu
@@ -71,10 +71,10 @@ COMMIT;
 -- ----------------------------
 CREATE TABLE IF NOT EXISTS `td_auth_role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '角色名称',
-  `routes` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '权限ID',
-  `desc` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '描述',
-  `selected` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '级联选择',
+  `name` varchar(255)  NOT NULL DEFAULT '' COMMENT '角色名称',
+  `routes` varchar(255)  NOT NULL DEFAULT '' COMMENT '权限ID',
+  `desc` varchar(255)  NOT NULL DEFAULT '' COMMENT '描述',
+  `selected` varchar(255)  NOT NULL DEFAULT '' COMMENT '级联选择',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -91,13 +91,13 @@ COMMIT;
 -- ----------------------------
 CREATE TABLE IF NOT EXISTS `td_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '分类名称',
+  `name` varchar(255)  DEFAULT '' COMMENT '分类名称',
   `pid` int(11) DEFAULT '0' COMMENT '父级ID',
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '跳转地址',
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '图片地址',
+  `url` varchar(255)  DEFAULT NULL COMMENT '跳转地址',
+  `image` varchar(255)  DEFAULT '' COMMENT '图片地址',
   `tag` tinyint(1) DEFAULT NULL COMMENT 'tag,1首页，2热门，3推荐',
-  `keywords` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '关键词',
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '描述',
+  `keywords` varchar(255)  DEFAULT '' COMMENT '关键词',
+  `description` varchar(255)  DEFAULT '' COMMENT '描述',
   `weigh` int(11) DEFAULT '0' COMMENT '权重',
   `status` tinyint(1) DEFAULT '1' COMMENT '1正常，2隐藏',
   `create_time` datetime DEFAULT NULL,
@@ -119,13 +119,13 @@ COMMIT;
 -- ----------------------------
 CREATE TABLE IF NOT EXISTS `td_config` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT 'key',
-  `value` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '值',
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'label',
-  `group` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '分组',
-  `rule` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '验证',
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '类型',
-  `options` varchar(800) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '选项值',
+  `key` varchar(255)  DEFAULT '' COMMENT 'key',
+  `value` varchar(255)  DEFAULT '' COMMENT '值',
+  `title` varchar(255)  DEFAULT NULL COMMENT 'label',
+  `group` varchar(255)  DEFAULT NULL COMMENT '分组',
+  `rule` varchar(255)  DEFAULT NULL COMMENT '验证',
+  `type` varchar(255)  DEFAULT '' COMMENT '类型',
+  `options` varchar(800)  DEFAULT '' COMMENT '选项值',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -149,11 +149,11 @@ COMMIT;
 -- ----------------------------
 CREATE TABLE IF NOT EXISTS `td_files` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '源文件名称',
+  `name` varchar(255)  NOT NULL DEFAULT '' COMMENT '源文件名称',
   `size` double(11,2) NOT NULL DEFAULT '0.00' COMMENT '文件大小',
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '文件路径',
-  `ext` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '后缀',
-  `mime_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '文件类型',
+  `url` varchar(255)  NOT NULL COMMENT '文件路径',
+  `ext` varchar(255)  NOT NULL DEFAULT '' COMMENT '后缀',
+  `mime_type` varchar(255)  NOT NULL COMMENT '文件类型',
   `width` int(11) NOT NULL DEFAULT '0' COMMENT '图像宽',
   `height` int(11) NOT NULL DEFAULT '0' COMMENT '图像高',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
