@@ -62,8 +62,8 @@ INSERT INTO `td_auth_menu` VALUES (25, '网站分类', 24, '', '/admin/category/
 INSERT INTO `td_auth_menu` VALUES (26, '添加\\修改', 25, '', '/admin/category/post', 0, 1, 2, '2021-06-25 11:50:05');
 INSERT INTO `td_auth_menu` VALUES (27, '删除', 25, '', '/admin/category/delete', 0, 1, 2, '2021-06-25 11:50:36');
 INSERT INTO `td_auth_menu` VALUES (28, '批量删除', 25, '', '/admin/category/deletes', 0, 1, 2, '2021-06-25 11:51:00');
-INSERT INTO `te_auth_menu` VALUES (29, '系统工具', 0, 'el-icon-s-ticket', '', 0, 2, 1, '2021-07-03 17:18:09');
-INSERT INTO `te_auth_menu` VALUES (30, '模块生成器', 29, '', '/admin/general.tool/index', 0, 2, 2, '2021-07-03 17:19:19');
+INSERT INTO `td_auth_menu` VALUES (29, '系统工具', 0, 'el-icon-s-ticket', '', 0, 2, 1, '2021-07-03 17:18:09');
+INSERT INTO `td_auth_menu` VALUES (30, '模块生成器', 29, '', '/admin/general.tool/index', 0, 2, 2, '2021-07-03 17:19:19');
 COMMIT;
 
 -- ----------------------------
