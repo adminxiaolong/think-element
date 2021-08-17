@@ -359,7 +359,7 @@
 
         onFinish:function (i) {
             let _this = this
-            let apis = ["site","admin","database","block"];
+            let apis = ["database","site","admin","block"];
             axios.post(_this.api[apis[i]],{id:1}).then(function (response) {
                 if(response.data.code == 200){
                     $("#install-mysql").append( '<p>'+response.data.data.message+'</p>')
