@@ -15,6 +15,8 @@
     </div>
 </el-form>
 
+<!--load plugins html--->
+{$plugin_html ? $plugin_html|raw:'' }
 
 {if in_array('add',$button)}
     <el-button type="primary" @click="onAdd" icon="el-icon-plus">添加</el-button>
