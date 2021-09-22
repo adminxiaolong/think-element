@@ -115,6 +115,9 @@ class  Rending
             ], 'search');
             $search['end_time'] = '';
         }
+        //获取插件
+        if (isset($fields['plugins']) && !empty($fields['plugins'])) $plugins = $this->plugins($fields['plugins']);
+
         if (true === $is_table) {
             $table_html .= '<el-table-column fixed="right" label="操作" width="120">';
             $table_html .= '<template #default="scope">';
@@ -126,13 +129,17 @@ class  Rending
                 $table_html .= '<template #reference><el-button type="danger" icon="el-icon-delete"></el-button></template>';
                 $table_html .= '</el-popconfirm>';
             }
+            //button 事件
+            $table_html .= $plugins['plugin_button'] ?? '';
             $table_html .= '</template></el-table-column>';
             $table_html .= ' </el-table>';
         }
         $form_html .= '</el-form>';
 
-        if (isset($fields['plugins']) && !empty($fields['plugins'])) $this->plugins($fields['plugins']);
+        //插件
+        View::assign($plugins ?? []);
 
+        //通用
         View::assign([
             'form' => json_encode($form, JSON_UNESCAPED_UNICODE),
             'form_html' => $form_html,
@@ -156,6 +163,8 @@ class  Rending
         $plugin_mon = '';
         $plugin_script = '';
         $plugin_css = '';
+        $plugin_button = '';
+
         foreach ($plugins as $key => $value) {
             $res = hook($value, null, false); //调用插件
             $res = json_decode($res, true);
@@ -165,15 +174,18 @@ class  Rending
             $plugin_mon .= $res['plugin_mon'] ?? '';
             $plugin_script .= $res['plugin_script'] ?? '';
             $plugin_css .= $res['plugin_css'] ?? '';
+            $plugin_button .= $res['plugin_button'] ?? '';
         }
-        View::assign([
+
+        return [
             'plugin_html' => $plugin_html,
             'plugin_data' => json_encode($plugin_data, 256),
             'plugin_func' => $plugin_func,
             'plugin_mon' => $plugin_mon,
             'plugin_script' => $plugin_script,
             'plugin_css' => $plugin_css,
-        ]);
+            'plugin_button' => $plugin_button
+        ];
     }
 
     public function aside($routes = [])
