@@ -91,9 +91,10 @@ trait View
                     $c = function (&$list) use (&$c) {
                         foreach ($list as $key => &$value) {
                             //根据父级别ID查询
-                            $value['children'] = $this->model->where('pid', $value['id'])->select();
-                            if (!empty($value['children'])) {
-                                $c($value['children']);
+                            $children = $this->model->where('pid', $value['id'])->select() ?:[];
+                            $list[$key]['children'] = $children;
+                            if (!empty($children)) {
+                                $c($children);
                             }
                         }
                         return $list;
