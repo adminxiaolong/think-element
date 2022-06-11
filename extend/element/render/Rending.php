@@ -46,6 +46,7 @@ class  Rending
                     if (!empty($field['prop']['options'])) {
                         $option = json_encode($field['prop']['options'], 256);
                     } else {
+                        self::$ot = [];
                         $model = new $field['prop']['callback'][0]();
                         $option = $model->{$field['prop']['callback'][1]}() ?: [];
                         $t = function ($option) use (&$t) {
