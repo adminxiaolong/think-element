@@ -135,5 +135,6 @@
   "tree_table": true,
   "expand_all": true,
   "button" : ["add","edit","delete","deletes","search","reset"],
-  "plugins": ["images"]
+  "plugins": ["images"],
+  "order_by": [{"field":"id","order": "desc"}]
 }

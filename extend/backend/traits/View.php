@@ -18,6 +18,8 @@ trait View
 
     public $pk = 'id';
 
+    public $order_by = 'create_time desc';
+
     public function __construct(App $app)
     {
         parent::__construct();
@@ -40,6 +42,13 @@ trait View
         $fields = file_get_contents($json_path);
         $this->fields = json_decode($fields, true);
         $this->tree_table = $this->fields['tree_table'];
+        $orders = isset($this->fields['order_by']) ? json_decode($this->fields,true) : [];//"order_by": [{"field":"id","order": "desc"}]
+        if(!empty($order)){
+            foreach ($orders as $key => $order){
+                $this->order_by.= $order['field'].' '.$order['order'].',';
+            }
+            $this->order_by = trim($this->order_by,',');
+        }
         Rending::table_form_search_rules($this->fields, $this->tree_table, $this->pk, true, true);
     }
 
@@ -86,7 +95,7 @@ trait View
             //如果是树形表格,采用递归方式获取表格内容，并且默认上级字段为pid
             if (true === $this->tree_table) {
                 $where .= " and pid = 0";
-                $list = $this->model->whereRaw($where)->limit($start, 20)->select();
+                $list = $this->model->whereRaw($where)->order($this->order_by)->limit($start, 20)->select();
                 if (!empty($list)) {
                     $c = function (&$list) use (&$c) {
                         foreach ($list as $key => &$value) {
@@ -102,9 +111,10 @@ trait View
                     $list = $c($list);
                 }
             } else {
-                $list = $this->model->whereRaw($where)->limit($start, 21)->select();
+                $list = $this->model->whereRaw($where)->order($this->order_by)->limit($start, 20)->select();
             }
             $count = $this->model->whereRaw($where)->count();
+
             return success([
                 'list' => $list,
                 'count' => intval($count)
