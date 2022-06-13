@@ -25,7 +25,7 @@ trait View
         parent::__construct();
         $model_path = '\\app\\admin\\model\\';
         $json_path = root_path() . 'public/static/backend/json/';
-        $model_name = explode('.', strtolower($app->request->controller()));
+        $model_name = explode('.', lcfirst($app->request->controller()));
         foreach ($model_name as $key => $value) {
             if($key == count($model_name) - 1){
                 $model_path .= ucfirst($value) . '\\';
@@ -35,7 +35,7 @@ trait View
             $json_path .= $value . '/';
         }
         $model_path = trim($model_path, '\\');
-        $json_path = rtrim($json_path, '/');
+        $json_path = rtrim(strtolower($json_path), '/');
         $json_path .= '.json';
         $this->model = new $model_path;
         $this->pk = $this->model->getPk();
