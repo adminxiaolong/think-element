@@ -5,5 +5,6 @@
 return [
     // 指令定义
     'commands' => [
+        'chat' => 'app\command\Chat', //清理配置
     ],
 ];
