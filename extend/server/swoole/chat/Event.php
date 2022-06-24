@@ -11,6 +11,11 @@ class Event
 {
     use Handle;
 
+    /**
+     * @param array $config
+     * @return \Closure
+     * todo 重写 open方法，简单的使用jwt进行了一个鉴权，没有深入判断token是否有效，自己根据业务变化而变化，也可以使用 handle中的公用open方法
+     */
     public static function open(array $config = []): \Closure
     {
         return function ($server, $request) use ($config) {

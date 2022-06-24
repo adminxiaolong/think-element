@@ -55,6 +55,7 @@ trait  Handle
 
             $payload = Parser::decode($frame);
 
+            //todo 这里是重要的，主要判断客户端发的是否是心跳消息,如果客户端发的是ping帧，恢复pong帧
             if (Parser::execute($server, $frame)) {
                 return;
             }
