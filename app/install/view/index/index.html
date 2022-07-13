@@ -260,9 +260,9 @@
           form:{
               hostname:'127.0.0.1',
               hostport:'3306',
-              database:'',
+              database:'think-element',
               username:'root',
-              password:'',
+              password:'root',
               charset:'utf8',
               prefix:'te_',
               title:'Think-element',
@@ -270,7 +270,8 @@
               description:'Think-element',
               admin_title:'Think-element',
               admin_username:'admin',
-              admin_password:''
+              admin_password:'123456',
+              action:'install'
           },
           rules:{
               hostname:[
@@ -343,7 +344,7 @@
                 if(response.data.code == 200){
                     $("#install-mysql").append( '<p>'+response.data.data.message+'</p>')
                     if(response.data.data.sql_error && response.data.data.sql_error > 0){
-                        $("#install-mysql").append( '<p>一共'+response.data.data.sql_error+'条sql执行错误；</p>')
+                        $("#install-mysql").append( '<p style="color: red">一共'+response.data.data.sql_error+'条sql执行错误；请删除数据库重新安装</p>')
                     }else{
                         if(i < _this.sql_count){
                             _this.onInstall(i)
@@ -399,10 +400,12 @@
         next:function() {
             let _this = this
             if(_this.step1_is_next == false && _this.active == 1){
-                return  _this.$message.error('请修改错误的配置项，再进入下一步')
+                _this.$message.error('请修改错误的配置项，再进入下一步')
+                return false;
             }
             if(_this.step2_is_next == false &&_this.active == 2 ){
-                return  _this.$message.error('数据库链接错误')
+                _this.$message.error('数据库链接错误')
+                return false;
             }
             if (_this.active++ > 2) _this.active = 1;
         }

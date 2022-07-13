@@ -14,7 +14,7 @@ function sp_execute_sql($db, $sql)
                 'message' => $msg . ' 成功！',
                 'sql_error' => 0
             ];
-        } catch (\PDOException $e) {
+        } catch (\Exception $e) {
             return [
                 'error'     => 1,
                 'message'   => $msg . ' 失败！',
@@ -31,7 +31,7 @@ function sp_execute_sql($db, $sql)
                 'message' => 'SQL执行成功!',
                 'sql_error' => 0
             ];
-        } catch (\PDOException $e) {
+        } catch (\Exception $e) {
             return [
                 'error'     => 1,
                 'message'   => $e->getMessage(),

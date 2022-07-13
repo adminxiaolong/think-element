@@ -19,7 +19,7 @@ return [
 
     'hostname'        => env('database.hostname', '127.0.0.1'),
 
-    'database'        => env('database.database', 'telement'),
+    'database'        => env('database.database', 'think-element'),
 
     'username'        => env('database.username', 'root'),
 

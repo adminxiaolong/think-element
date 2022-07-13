@@ -7,11 +7,11 @@ CREATE TABLE IF NOT EXISTS `td_admin` (
   `mobile` char(11)  NOT NULL DEFAULT '' COMMENT '手机号',
   `uname` varchar(255)  NOT NULL DEFAULT '' COMMENT '用户名',
   `pass` varchar(255)  NOT NULL DEFAULT '' COMMENT '密码',
-  `ip` varchar(255)  NOT NULL COMMENT '登陆IP',
+  `ip` varchar(255)  NOT NULL DEFAULT '' COMMENT '登陆IP',
   `login_time` datetime DEFAULT NULL  COMMENT '登陆时间',
   `create_time` datetime DEFAULT NULL  COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 -- ----------------------------

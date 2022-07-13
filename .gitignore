@@ -27,3 +27,6 @@ Temporary Items
 .apdisk
 .idea
 /public/install.lock
+/public/nginx.htaccess
+/public/.htaccess
+/public/.htaccess

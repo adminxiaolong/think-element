@@ -1,0 +1,10 @@
+APP_DEBUG =  true
+
+[DATABASE]
+HOSTNAME = %s
+DATABASE = %s
+USERNAME = %s
+PASSWORD = %s
+HOSTPORT = %s
+CHARSET  = %s
+PREFIX   = %s

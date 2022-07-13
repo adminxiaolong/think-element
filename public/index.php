@@ -16,9 +16,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 // 执行HTTP应用并响应
 $http = (new App())->setEnvName('develop')->http;
-
 $response = $http->run();
-
 if (!is_file(root_path() . 'public//install.lock')) {
     header("location:./install.php");
     exit;
