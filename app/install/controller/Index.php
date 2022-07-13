@@ -76,14 +76,6 @@ class Index
                     'name' => '配置文件',
                     'path' => 'public/static/backend/json'
                 ],
-                [
-                    'name' => 'public',
-                    'path' => 'public'
-                ],
-                [
-                    'name' => 'database',
-                    'path' => 'config/database.php'
-                ],
             ];
             $paths = [];
 
